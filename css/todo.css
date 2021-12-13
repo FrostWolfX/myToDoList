@@ -1,0 +1,103 @@
+.todo{
+    background-color: rgb(220, 240, 230, .5);
+    padding: 50px 0;
+    font-size: 1.2rem;
+}
+
+.todoTitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.todoWrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.todoFormWrapper {
+    flex-grow: 1;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgb(159, 209, 209);
+    border-radius: 15px;
+}
+
+.todoForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.todoLable {
+    padding: 5px 0;
+}
+
+.todoInput,
+.todoBtn,
+.postBtnReady {
+    border: none;
+}
+
+.todoInput:hover,
+.todoBtn:hover,
+.postBtnReady:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(131, 122, 255, .7);
+}
+
+.todoInput {
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.todoBtn {
+    display: block;
+    align-self: flex-end;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.todoResult {
+    font-size: 1.4rem;
+}
+
+
+
+
+.todoListWrapper{
+    max-width: 400px;
+    flex-grow: 1;
+}
+
+.todoListItem {
+    margin-bottom: 15px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    background-color: rgb(219, 136, 136);
+    border-radius: 15px;
+}
+
+.postAuthor, .postTodo {
+    margin: 20px 40px 0 20px;
+}
+
+.postBtnReady {
+    width: 25px;
+    height: 25px;
+    display: block;
+    align-self: flex-end;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+
+.post_complete {
+    background-color: rgb(191, 219, 145);
+}

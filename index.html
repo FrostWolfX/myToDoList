@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad ToDo list</title>
+</head>
+
+<body>
+    <section class="todo">
+        <div class="container">
+            <h1 class="todoTitle">
+                Список дел
+            </h1>
+
+            <div class="todoWrapper">
+                <div class="todoFormWrapper">
+                    <form class="todoForm">
+                        <label class="todoLable" for="author">Автор</label>
+                        <input type="text" class="todoInput" name="author" required>
+                        <lable class="todoLable" for="post">Задача</lable>
+                        <input type="text" class="todoInput" name="post" required>
+                        <button class="todoBtn" type="submit">Отправить</button>
+                    </form>
+                    <p class="todoResult">
+                        Всего дел:
+                        <span class="todoCount">0</span>
+                    </p>
+                </div>
+
+                <div class="todoListWrapper">
+                    <ol class="todoList">
+                        <!-- <li class="todoListItem">
+                            <article class="post post_complete">
+                                <h3 class="postAuthor">Виктория</h3>
+                                <p class="postTodo">postTodo postTodo postTodo postTodo postTodopostTodo postTodo postTodoОтредактировать статью Отредактировать статью Отредактировать статью Отредактировать статью Отредактировать статью</p>
+                                <button class="postBtnReady" type="button">✔</button>
+                            </article>
+                        </li>
+
+                        <li class="todoListItem">
+                            <article class="post">
+                                <h3 class="postAuthor">Виктория</h3>
+                                <p class="postTodo">Отредактировать статью</p>
+                                <button class="postBtnReady" type="button">✔</button>
+                            </article>
+                        </li> -->
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
+</body>
+
+</html>
