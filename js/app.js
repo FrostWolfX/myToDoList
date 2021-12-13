@@ -34,6 +34,7 @@ function createTodo(objectTodo) {
     const li = document.createElement('li');
     li.classList.add('todoListItem');
     li.innerHTML = post;
+    
     return li;
 }
 
