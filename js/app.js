@@ -67,7 +67,6 @@ function checkToDo(event) {
         btn.classList = 'postDelete';
         btn.innerHTML = "✖";
     }
-
 }
 
 function addTodo(event) {
