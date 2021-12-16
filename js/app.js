@@ -19,7 +19,7 @@ const base = {
             ready: false,
         },
     ],
-    checkId(id) {    
+    checkId(id) {
         console.log(id);
     },
     addTodo(author, post) {
