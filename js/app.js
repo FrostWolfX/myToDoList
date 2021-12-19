@@ -3,24 +3,17 @@ const todoBtn = document.querySelector('.todoBtn');
 
 const inputAuthor = document.querySelector('.inputAuthor');
 const inputPost = document.querySelector('.inputPost');
+const todoCount = document.querySelector('.todoCount');
+const todoForm = document.querySelector('.todoForm');
 
 const base = {
-    todo: [
-        {
-            id: 'td1',
-            author: 'Виктория',
-            post: 'Отредактировать статью',
-            ready: false,
-        },
-        {
-            id: 'td2',
-            author: 'Виктория2',
-            post: 'Отредактировать статью2',
-            ready: false,
-        },
-    ],
-    checkId(id) {    
-        console.log(id);
+    todo: getToDoLS(),
+    checkId(id) {
+        for (let i = 0; i < base.todo.length; i++) {
+            if (base.todo[i].id === id) {
+                base.todo[i].ready = true;
+            }
+        }
     },
     addTodo(author, post) {
         const todo = {
@@ -35,12 +28,43 @@ const base = {
     }
 }
 
+/**
+ * 
+ * @param {*} event 
+ * Добавляем новые дела
+ */
+function addTodo(event) {
+    event.preventDefault();
+    const authorText = inputAuthor.value;
+    const postText = inputPost.value;
+
+    const objToDo = base.addTodo(authorText, postText);
+    const todoLi = createTodo(objToDo);
+
+    todoList.append(todoLi);
+
+    setToDoLS();
+    getToDoCount();
+
+    todoForm.reset();
+}
+
+
 function createTodo(objectTodo) {
     let post = `
-            <article class="post">
+            <article class="post ${objectTodo.ready ? 'postComplete' : ''}">
                 <h3 class="postAuthor">${objectTodo.author}</h3>
                 <p class="postTodo">${objectTodo.post}</p>
-                <button class="postBtnReady" type="button" data-id="${objectTodo.id}">✔</button>
+                ${objectTodo.ready
+                ? `<button class="postDelete"
+                    data-id="${objectTodo.id}"
+                    type="button"
+                    >✖</button>`
+                : `<button class="postBtnReady"
+                    data-id="${objectTodo.id}"
+                    type="button"
+                    >✔</button>`
+                }
             </article>
         `;
     const li = document.createElement('li');
@@ -51,36 +75,77 @@ function createTodo(objectTodo) {
 }
 
 function renderTodo() {
-    console.log(base.todo.length);
     for (let i = 0; i < base.todo.length; i++) {
         const li = createTodo(base.todo[i]);
         todoList.append(li);
+        getToDoCount();
     }
 }
 
+/**
+ * 
+ * @param {*} event 
+ * когда нажимаю на кнопку выполнить
+ */
 function checkToDo(event) {
     const btn = event.target.closest('.postBtnReady');
     if (btn) {
         const post = btn.closest('.post');
-        post.classList.add('postComplete');
 
         btn.classList = 'postDelete';
         btn.innerHTML = "✖";
+
+        post.classList.add('postComplete');
+
+        const id = btn.dataset.id;
+        base.checkId(id);
+        setToDoLS();
+    } else {
+        deleteToDoItem(event);
     }
 }
 
-function addTodo(event) {
-    event.preventDefault();
-    const author = inputAuthor.value;
-    const post = inputPost.value;
-
-    const todo = base.addTodo(author, post);
-    const li = createTodo(todo);
-    todoList.append(li);
-    console.log(base.todo);
+function getToDoCount() {
+    todoCount.innerHTML = base.todo.length;
+    return todoCount;
 }
+
+function deleteToDoItem(event) {
+    const btn = event.target.closest('.postDelete');
+    if (btn) {
+        const li = event.target.closest('.todoListItem');
+
+        const id = btn.dataset.id;
+        for (let i = 0; i < base.todo.length; i++) {
+
+            if (base.todo[i].id === id) {
+                base.todo.splice(i, 1);
+            }
+        }
+        li.remove();
+        setToDoLS();
+        getToDoCount();
+    }
+}
+
+/**
+ * прочитать из Local Storage браузера
+ */
+function getToDoLS() {
+    if (localStorage.getItem('todo')) {
+        return JSON.parse(localStorage.getItem('todo'));
+    }
+
+    return [];
+}
+/**
+ * запись в Local Storage браузера
+ */
+function setToDoLS() {
+    localStorage.setItem('todo', JSON.stringify(base.todo));
+}
+setToDoLS();
+renderTodo();
 
 todoList.addEventListener('click', checkToDo);
 todoBtn.addEventListener('click', addTodo);
-
-renderTodo();
