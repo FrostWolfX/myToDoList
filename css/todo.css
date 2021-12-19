@@ -106,3 +106,12 @@ button:hover,
     transition: width 2s, height 2s, background-color 2s, transform 2s;
     background-color: rgb(191, 219, 145);
 }
+
+#allContent {
+    position: relative;
+    height: 100vh;
+}
+.copyright {
+    position: absolute;
+    bottom: 0;
+}
