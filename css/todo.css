@@ -1,5 +1,4 @@
 .todo{
-    background-color: rgb(220, 240, 230, .5);
     padding: 50px 0;
     font-size: 1.2rem;
 }
@@ -110,6 +109,7 @@ button:hover,
 #allContent {
     position: relative;
     height: 100vh;
+    background-color: rgb(220, 240, 230, .5);
 }
 .copyright {
     position: absolute;
